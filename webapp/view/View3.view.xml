@@ -1,0 +1,174 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    controllerName="arvind.sd.cls.controller.View3"
+>
+    <Page
+        id="idpage3" 
+        title="Request No. { path : 'Local>/CreditLimit/ZREQNUM',
+            type : 'sap.ui.model.odata.type.String', 
+            
+       constraints: { 
+               isDigitSequence : true,
+                     maxLength : 10 }
+            }"
+        showNavButton="true"
+        navButtonPress="onBack"
+    >
+        <f:SimpleForm
+            id="3rdDetail"
+            editable="true"
+            layout="ColumnLayout"
+            labelSpanXL="4"
+            labelSpanL="3"
+            labelSpanM="4"
+            labelSpanS="12"
+            adjustLabelSpan="false"
+            emptySpanXL="0"
+            emptySpanL="1"
+            emptySpanM="0"
+            emptySpanS="0"
+            columnsXL="2"
+            columnsL="2"
+            columnsM="2"
+            singleContainerFullSize="false"
+        >
+            <f:content>
+                <!-- <Label
+                    text="Request No."
+                    labelFor="idZREQNUM"
+                />
+                <Text
+                    id="idZREQNUM"
+                    text="{ZREQNUM}"
+                /> -->
+                <Label text="Customer No." />
+                <Text
+                    id="idKUNNR"
+                    text="{ path : 'Local>/CreditLimit/KUNNR',
+            type : 'sap.ui.model.odata.type.String', 
+       constraints: { 
+               isDigitSequence : true,
+                     maxLength : 10 }
+            }"
+                />
+                <Label text="Sales Org" />
+                <Text
+                    id="idVKORG"
+                    text="{Local>/CreditLimit/VKORG}"
+                />
+                <Label text="CustName" />
+                <Text
+                    id="idNAME1"
+                    text="{Local>/CreditLimit/NAME1}"
+                />
+
+                <Label text="Cust Credit Limit" />
+                <Text
+                    id="idKLIMK"
+                    text="{Local>/CreditLimit/KLIMK} {Local>/CreditLimit/WAERS}"
+                />
+                <Label
+                    text="Credit Limit"
+                    labelFor="idZINC_KLIMK"
+                />
+               
+                <Input
+                   width="50%"
+                    id="idZINC_KLIMK"
+                   type="Number" 
+                   
+                    value =  "{ path: 'Local>/CreditLimit/ZINC_KLIMK'}"
+                />
+                <!-- <Label text="INR" /> -->
+                <Label text="Final Credit Limit" />
+                <Text
+                    id="idZFIN_KLIMK"
+                    text="{Local>/CreditLimit/ZFIN_KLIMK}"
+                />
+                <!-- 
+               <core:Title text="Credit Limit Detail" /> 
+                <core:Title text="Customer Credit Deatils" />
+                <core:Title text="Other Details" /> -->
+
+                <Label text="Remark" />
+                <Input
+                    id="idZREMARK"
+                    value="{Local>/CreditLimit/ZREMARK}"
+                />
+
+                <Label text="Status" />
+                <Text
+                    id="idZSTATUS"
+                    text="{Local>/CreditLimit/ZSTATUS}"
+                />
+
+                <Label text="Requester Id" />
+                <Text
+                    id="idZREQTID"
+                    text="{Local>/CreditLimit/ZREQTID}"
+                />
+
+                <Label text="Requester Name" />
+                <Text
+                    id="idZREQT_USER_NAME"
+                    text="{Local>/CreditLimit/ZREQT_USER_NAME}"
+                />
+                <Label text="Requested Date" />
+                <Text
+                    id="idZREQTDT"
+                    text="{
+                     path : 'Local>/CreditLimit/ZREQTDT',
+                    type: 'sap.ui.model.type.DateTime',
+				formatOptions: {
+					pattern: 'dd.MM.yyyy' }
+
+                     }"
+                />
+
+                <Label text="Requested Time" />
+                <Text
+                    id="idZREQTTM"
+                    text="{
+                     path : 'Local>/CreditLimit/ZREQTTM',
+                     type: 'sap.ui.model.odata.type.Time',
+      formatOptions: { style: 'short' }
+                 }"
+                />
+
+                <Label text="Approver Id" />
+                <Text
+                    id="idZAPRID"
+                    text="{Local>/CreditLimit/ZAPRID}"
+                />
+
+                <Label text="Approver Name" />
+                <Text
+                    id="idZAPR_USER_NAME"
+                    text="{Local>/CreditLimit/ZAPR_USER_NAME}"
+                />
+            </f:content>
+        </f:SimpleForm>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button
+                    id="btnApr"
+                    text="Approve"
+                    press="onApprove"
+                    type="Accept"
+                    icon="sap-icon://accept"
+                />
+                <Button
+                    id="idReject"
+                    text="Reject"
+                    press="onReject"
+                    type="Reject"
+                    icon="sap-icon://decline"
+                />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

@@ -1,0 +1,141 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    controllerName="arvind.sd.cls.controller.View1"
+>
+    <Page
+        title="Credit Limit Approval"
+        xmlns:core="sap.ui.core"
+    >
+        <!-- <headerContent>
+            <Button
+                icon="sap-icon://action"
+                press="onClick"
+            />
+        </headerContent> -->
+
+        <f:SimpleForm
+            id="SForm"
+            editable="true"
+            width="900px"
+            columnsL="2"
+        >
+            <!-- <f:title>
+            <t:Title text="Credit Limit Approval" ></t:Title>
+        </f:title> -->
+            <f:content>
+                <Label text="Request No" />
+                <Input
+                    id="sReqNo"
+                    width="150px"
+                    showValueHelp="true"
+                    valueHelpRequest="onReqF4"
+                />
+
+                <Label text="Customer Code" />
+                <!-- <Input 
+                    id="sCust"
+                    width="150px"
+                    valueHelpRequest="onCustF4"
+                    showValueHelp="true"
+                /> -->
+
+                <MultiInput
+                    width="70%"
+                    showClearIcon="true"
+                    id="sCust"
+                    suggestionItems="{
+				path: '/CustomerF4Set',
+				sorter: { path: 'KUNNR' }
+			}"
+                    showValueHelp="true"
+                    valueHelpRequest="onCustF4"
+                >
+                    <core:Item
+                        key="{KUNNR}"
+                        text="{KUNNR} {NAME1}"
+                    />
+                </MultiInput>
+                <Label text="Sales Org" />
+                <Input
+                    id="sSorg"
+                    width="150px"
+                    valueHelpRequest="onSalesOrgF4"
+                    showValueHelp="true"
+                />
+                <Label
+                    text="Date From  "
+                    labelFor="DP1"
+                />
+                <DatePicker
+                    id="DP1"
+                    width="35%"
+                    valueFormat="yyyyMMdd"
+                    displayFormat="dd-MM-yyyy"
+                />
+                <Label
+                    text="  To  "
+                    labelFor="DP2"
+                />
+                <DatePicker
+                    id="DP2"
+                    width="71%"
+                    valueFormat="yyyyMMdd"
+                    displayFormat="dd-MM-yyyy"
+                />
+
+                <HBox alignItems="Center">
+                    <items />
+                </HBox>
+                <Label text="Status" />
+
+                <Select
+                    id="idSelect"
+                    selectedKey="P"
+                    width="40%"
+                >
+                    <items>
+                        <core:Item
+                            key="P"
+                            text="Pending"
+                        />
+                        <core:Item
+                            key="A"
+                            text="Approved"
+                        />
+                        <core:Item
+                            key="R"
+                            text="Rejected"
+                        />
+                    </items>
+                </Select>
+                <VBox>
+                    <items />
+                </VBox>
+            </f:content>
+        </f:SimpleForm>
+        <HBox
+            alignItems="End"
+            width="auto"
+            height="auto"
+            alignContent="End"
+            direction="Row"
+        >
+            <items>
+                <f:SimpleForm>
+                    <Button
+                        text="Submit"
+                        width="200px"
+                        class="sapUiSmallMargin"
+                        press="onSubmit"
+                        icon="sap-icon://validate"
+                    />
+                </f:SimpleForm>
+            </items>
+        </HBox>
+        <!-- <Button id="btnSubmit" text="Submit" press="onSubmit" width="10%"
+                   class="sapUiSmallMargin"   ></Button> -->
+    </Page>
+</mvc:View>

@@ -1,0 +1,117 @@
+{
+    "_version": "1.1.0",
+    "sap.app": {
+        "id": "arvind.sd.cls",
+        "type": "application",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "i18n": "i18n/i18n.properties",
+        "title": "Credit Limit Approval",
+        "description": "Credit Limit Approval",
+        "dataSources": {
+            "creditLimit": {
+                "uri": "/sap/opu/odata/sap/ZSD_CREDITLIMIT_APR_SRV/",
+                "type": "OData",
+                
+                "settings": {
+                    "odataVersion": "2.0"  
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "fullWidth": true,
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "phone": true,
+            "tablet": true
+        },
+        "supportedThemes": [
+            "sap_fiori_3"
+        ]
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "minUI5Version": "1.130.8",
+            "libs": {
+                "sap.m": {
+                    "minVersion": "1.130.8"
+                },
+                "sap.ui.layout": {
+                    "minVersion": "1.130.8"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "arvind.sd.cls.view.App",
+            "type": "XML",
+            "id": "idAppCon"
+        },
+        "routing": {
+            "config": {
+                "viewPath": "arvind.sd.cls.view",
+                "viewType": "XML",
+                "controlId": "idAppCon",
+                "clearControlAggregation": true
+            },
+            
+            "routes": [
+                {
+                    "name": "init",
+                    "pattern": "",
+                    "target": "1st"
+                },
+                {
+                    "name": "details",
+                    "pattern": "details/{id}/{id2}/{idSOrg}/{FDate}/{TDate}/{Cust}",
+                    "target": "2nd"
+                },
+                {
+                    "name": "CreditLimitDetail",
+                    "pattern": "CreditLimitDetail/{CreditLimitItem}",
+                    "target": "3rd"
+                }
+            ],
+            "targets": {
+                "1st": {
+                    "viewName": "View1",
+                    "controlAggregation": "pages",
+                    "viewId": "idView1"
+                },
+                "2nd": {
+                    "viewName": "View2",
+                    "controlAggregation": "pages",
+                    "viewId": "idView2"
+                },
+                "3rd": {
+                    "viewName": "View3",
+                    "controlAggregation": "pages",
+                    "viewId": "idView3"
+                }
+            }
+        },
+        "models": {
+            "":{
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "dataSource": "creditLimit",
+                "settings": {
+                    "useBatch": false
+
+                }
+            },
+            "i18n":{
+                "type": "sap.ui.model.resource.ResourceModel",
+                "preload": true,
+                "settings": {"bundleUrl": "i18n/i18n.properties"}
+                
+
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    }
+}

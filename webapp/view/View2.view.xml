@@ -1,0 +1,137 @@
+<mvc:View xmlns:mvc ="sap.ui.core.mvc" xmlns="sap.m" xmlns:t="sap.ui.core" xmlns:f="sap.ui.layout.form" controllerName="arvind.sd.cls.controller.View2">
+    <Page title="Approve / Reject Credit Limit" xmlns:core = "sap.ui.core"  showNavButton="true"
+    navButtonPress="onBack">
+    <!-- items="{CreditLimit>/}   -->
+ <Table id="supplyTable" itemPress="onDetailPress" mode="MultiSelect"
+ items="{CreditLimit>/}" selectionChange="onSelectionChange"
+ alternateRowColors = "true" 
+ >
+            <headerToolbar>
+            <Toolbar >
+            <ToolbarSpacer>
+            
+            </ToolbarSpacer>
+            <!-- <Button icon="sap-icon://filter" press="onFilter"></Button> -->
+            </Toolbar>
+            </headerToolbar>
+            <columns > 
+            <Column width="8%">
+            <header>
+               <Label text="ReqNo."></Label> 
+           
+            </header>
+            </Column>
+            <Column minScreenWidth="Desktop" width="7%">
+            <header>
+          
+               <Label text="CustNo."></Label> 
+            </header>
+            </Column>
+            <Column minScreenWidth="Desktop" width="6%">
+            <header>
+           
+                     
+
+               <Label text="SalesOrg." ></Label> 
+            </header>
+            </Column>
+              <Column>
+            <header>
+         
+            
+               <Label text="Cust. Name"></Label> 
+            </header>
+            </Column>
+        <Column >
+            <header>
+        
+            
+               <Label text="Cust Credit Limit"></Label> 
+            </header>
+            </Column>            
+            
+        <Column>
+            <header>
+                    
+               <Label text="Credit Limit"></Label> 
+            </header>
+            </Column>
+                    <Column>
+            <header>
+            
+               <Label text="Final Credit Limit"></Label> 
+            </header>
+            </Column>
+                    <Column>
+            <header>
+            
+               <Label text="Remark"></Label> 
+            </header>
+            </Column>
+                    <Column>
+            <header>
+            
+               <Label text="Status"></Label> 
+            </header>
+            </Column>
+                  <Column>
+            <header>
+            
+               <Label text="Message"></Label> 
+            </header>
+            </Column>
+          
+            </columns>
+            <items >
+            <ColumnListItem press="onDetailPress" 	type="Active">
+            <cells>
+            <!-- <Text text="{CreditLimit>ZREQNUM}" width="30%"></Text> -->
+           <Label text="{ path : 'CreditLimit>ZREQNUM',
+            type : 'sap.ui.model.odata.type.String', 
+       constraints: { 
+               isDigitSequence : true,
+                     maxLength : 10 }
+            }" textAlign="Center"    width="30%"></Label>
+            
+            <Label text="{path : 'CreditLimit>KUNNR' ,
+             type : 'sap.ui.model.odata.type.String', 
+             constraints: { 
+               isDigitSequence : true,
+                     maxLength : 10 }
+            }" ></Label>
+            <Label text="{CreditLimit>VKORG}"></Label>
+            <Label text="{CreditLimit>NAME1}" wrapping="true">
+            <!-- <tooltip>
+            <t:TooltipBase text="{CreditLimit>NAME1}">
+            
+            </t:TooltipBase>
+            </tooltip> -->
+            </Label>
+             <Label text="{CreditLimit>KLIMK}"></Label>
+              <Input value="{CreditLimit>ZINC_KLIMK}" type="Number" 
+             editable=  "{=${CreditLimit>ZSTATUS}==='PENDING' ? true : false}" ></Input> 
+              <!-- <Input value="{ path: 'CreditLimit>ZINC_KLIMK', 
+              formatter: '.formatter.decimal'}" type="Number"></Input> 
+               -->
+               <Label text="{CreditLimit>ZFIN_KLIMK}"></Label>
+                <Input value="{CreditLimit>ZREMARK}"
+                 editable=  "{=${CreditLimit>ZSTATUS}==='PENDING' ? true : false}"
+                ></Input>
+                     <Label text="{CreditLimit>ZSTATUS}"></Label>
+                     <Label text="{CreditLimit>ERROR}" wrapping="true"></Label>   
+            </cells>
+            </ColumnListItem>
+            </items>
+            </Table> 
+         <footer>
+        <Toolbar>
+        <ToolbarSpacer></ToolbarSpacer>
+        <Button id="btnApprov" text="Approve" press="onApprove" type="Accept"
+        icon="sap-icon://accept"/>
+        <Button id="btnReject" text="Reject" press="onApprove" type="Reject"
+        icon="sap-icon://decline"/>
+       
+        </Toolbar>
+        </footer>   
+</Page>
+</mvc:View>
