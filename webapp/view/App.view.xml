@@ -1,3 +1,4 @@
 <mvc:View xmlns:mvc ="sap.ui.core.mvc" xmlns="sap.m" controllerName="arvind.sd.cls.controller.App">
     <App id="idAppCon" />
+    
 </mvc:View> 
